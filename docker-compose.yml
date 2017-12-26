@@ -1,0 +1,31 @@
+version: '2'
+
+services:
+
+    #--------------------------------------
+    # Web Service
+    #--------------------------------------
+    imdock-cap56:
+        restart: always
+        image: suwaychang0608/imdock-lap72
+#        build:
+#          context: .
+#          dockerfile: Dockerfile
+        container_name: {project-name}
+        working_dir: /var/www
+        ports:
+            - "80:80"
+            - "8022:22"
+#            - "9000:9000"
+        volumes:
+          - ../website:/var/www
+          - ./sites-enable:/etc/httpd/site-enable
+          - ./conf/apache.conf:/etc/httpd/conf/httpd.conf
+          - ./conf/php-ini-overrides.ini:/etc/php.d/zzz-overrides.ini
+          #- ./conf/supervisord.conf:/etc/supervisor/supervisord.conf
+          #- ~/.ssh:/root/.ssh
+
+networks:
+    default:
+        external:
+            name: imdockgroup
