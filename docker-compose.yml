@@ -18,7 +18,7 @@ services:
             - "8022:22"
 #            - "9000:9000"
         volumes:
-          - ../website:/var/www
+          - ./website:/var/www
           - ./sites-enable:/etc/httpd/site-enable
           - ./conf/apache.conf:/etc/httpd/conf/httpd.conf
           - ./conf/php-ini-overrides.ini:/etc/php.d/zzz-overrides.ini
