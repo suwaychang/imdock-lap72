@@ -27,7 +27,7 @@ RUN yum -y install httpd
 # Ensure that PHP7 FPM is run as root.
 RUN sed -i -e 's/user = apache/user = nginx/' /etc/php-fpm.d/www.conf
 RUN sed -i -e 's/group = apache/group = nginx/' /etc/php-fpm.d/www.conf
-RUN mv /etc/php.d/xdebug.ini /etc/php.d/xdebug.ini.disable
+RUN mv /etc/php.d/15-xdebug.ini /etc/php.d/15-xdebug.ini.disable
 
 # Setting Composer
 RUN curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer && \
